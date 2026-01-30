@@ -1,0 +1,295 @@
+{
+  "info": {
+    "_postman_id": "f19e1ed0-ba85-4bfe-9371-bdec8be09ed2",
+    "name": "Gerenciador Torneio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32010037",
+    "_collection_link": "https://go.postman.co/collection/32010037-f19e1ed0-ba85-4bfe-9371-bdec8be09ed2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Criar time",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \r\n    \"name\":\"Time Santa Rosa\",\r\n    \"tag\": \"TSR\",\r\n    \"president\":\"teste\",\r\n    \"city\":\"Santa Rosa\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/teams",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "teams"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listar todos os times",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/teams",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "teams"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Inserir Jogador no time",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"Name\": \"Jogador 4\",\r\n  \"Cpf\": \"11111111111\",\r\n  \"Position\": \"Ataque\",\r\n  \"Birthdate\": \"1999-02-19\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/team/0c51c600-0c66-44fb-a642-cb40ff9d122e/players",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "team",
+            "0c51c600-0c66-44fb-a642-cb40ff9d122e",
+            "players"
+          ],
+          "query": [
+            {
+              "key": "team_id",
+              "value": null,
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar todos os jogadores cadastrados",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/players",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar jogadores de um time",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/team/0c51c600-0c66-44fb-a642-cb40ff9d122e/players",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "team",
+            "0c51c600-0c66-44fb-a642-cb40ff9d122e",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Começa torneio",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/tournaments/f310c8c5-825a-49ad-aec4-cc1fc7aa666d/start",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "tournaments",
+            "f310c8c5-825a-49ad-aec4-cc1fc7aa666d",
+            "start"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Busca tabela torneio",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/tournaments/f310c8c5-825a-49ad-aec4-cc1fc7aa666d/standings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "tournaments",
+            "f310c8c5-825a-49ad-aec4-cc1fc7aa666d",
+            "standings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar partidas de um torneio",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/matches/tournament/f310c8c5-825a-49ad-aec4-cc1fc7aa666d",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "matches",
+            "tournament",
+            "f310c8c5-825a-49ad-aec4-cc1fc7aa666d"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Criar torneio",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Copa do Interior\",\r\n  \"format\": \"LEAGUE\",\r\n  \"startDate\": \"2023-10-01\",\r\n  \"baselocation\":\"Brasil\",\r\n  \"teamIds\": [\r\n     \"0c51c600-0c66-44fb-a642-cb40ff9d122e\",\r\n     \"8a700b71-f933-42d8-a9e6-1e838b81c268\",\r\n     \"f035b8c6-6c35-4ea9-bd2c-d8c70edbf22f\",\r\n     \"e4dfbe3d-14af-43d1-b51c-e714c3d894f6\"\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/tournaments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tournaments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Registrar novos eventos da partida",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"matchId\":\"26253d0b-e80d-474b-b8a3-1fe0153f6dc9\",\r\n    \"type\":\"GOAL\",\r\n    \"minute\":4,\r\n    \"details\":{\r\n        \"teamId\":\"0c51c600-0c66-44fb-a642-cb40ff9d122e\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/matches/26253d0b-e80d-474b-b8a3-1fe0153f6dc9/events",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "matches",
+            "26253d0b-e80d-474b-b8a3-1fe0153f6dc9",
+            "events"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "buscar historico da partida",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/matches/26253d0b-e80d-474b-b8a3-1fe0153f6dc9/history",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "matches",
+            "26253d0b-e80d-474b-b8a3-1fe0153f6dc9",
+            "history"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -20,4 +20,20 @@ export interface Tournament {
   name: string;
   startDate: string;
   endDate: string;
+  format: string;
+  baselocation: string;
+  teamIds: string[];
+}
+
+export interface Standings {
+  teamId: string;
+  position?: number;
+  points: number;
+  matchesPlayed: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: number;
 }

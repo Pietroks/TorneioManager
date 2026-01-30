@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Tournament } from "../types";
 import { tournamentServices } from "../services/tournamentService";
-import { AlertCircle, Calendar, Calendar1, Loader2, Plus, Trophy, TrophyIcon } from "lucide-react";
+import { AlertCircle, Loader2, Plus, Trophy, TrophyIcon } from "lucide-react";
 import { TournamentForm } from "./TournamentForm";
 
 export function TournamentList() {
@@ -25,6 +25,12 @@ export function TournamentList() {
     } finally {
       setLoaging(false);
     }
+  }
+
+  function formatLabel(format: string) {
+    if (format === "LEAGUE") return "Pontos Corridos";
+    if (format === "MATA_MATA") return "Mata-Mata";
+    return format || "Padrão";
   }
 
   return (
@@ -66,32 +72,21 @@ export function TournamentList() {
             {tournaments.map((t) => (
               <div
                 key={t.id}
-                className="group relative bg-[#1e293b]/40 backdrop-blur-md rounded-2xl p-6 border border-white/5 hover:border-amber-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-900/10"
+                className="group relative bg-[#1e293b]/40 backdrop-blur-md rounded-2xl p-6 border border-white/5 hover:border-amber-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-900/10 flex flex-col justify-between"
               >
-                <div className="flex justify-between items-start mb-6">
-                  <div className="h-14 w-14 bg-linear-to-br from-slate-800 to-slate-900 rounded-xl flex items-center justify-center border border-white/10 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                    <Trophy className="text-amber-500 w-7 h-7" />
-                  </div>
-                  <span className="font-mono text-xs font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
-                    Em andamento
-                  </span>
-                </div>
-
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-amber-400 transition-colors duration-500">{t.name}</h3>
-
-                <div className="space-y-3 p-4 border-t border-slate-700/50">
-                  <div className="flex items-center text-slate-400 text-sm">
-                    <Calendar size={16} className="mr-3 text-slate-500" />
-                    <span>
-                      Inicio: <span className="text-slate-300">{t.startDate}</span>
+                <div>
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="h-14 w-14 bg-linear-to-br from-slate-800 to-slate-900 rounded-xl flex items-center justify-center border border-white/10 shadow-inner group-hover:scale-110 transition-transform duration-500">
+                      <Trophy className="text-amber-500 w-7 h-7" />
+                    </div>
+                    <span className="font-mono text-[10px] uppercase font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-1 rounded-full tracking-wider">
+                      {formatLabel(t.format)}
                     </span>
                   </div>
-                  <div className="flex items-center text-slate-400 text-sm">
-                    <Calendar1 size={16} className="mr-3 text-slate-500" />
-                    <span>
-                      Final: <span className="text-slate-500">{t.endDate}</span>
-                    </span>
-                  </div>
+
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors duration-500 line-clamp-2">
+                    {t.name}
+                  </h3>
                 </div>
               </div>
             ))}

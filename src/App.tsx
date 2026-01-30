@@ -1,20 +1,23 @@
-import { useState } from "react";
-import { TeamList } from "./components/TeamList";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
+import { TeamList } from "./components/TeamList";
 import { PlayerList } from "./components/PlayerList";
 import { TournamentList } from "./components/TournamentList";
 
 function App() {
-  const [currentView, setCurrentView] = useState("teams");
-
   return (
-    <div className="w-full min-h-screen bg-[#0B1120]">
-      <Navbar currentView={currentView} onNavigate={setCurrentView} />
+    <div className="min-h-screen bg-[#0B1120] text-slate-200">
+      <Navbar />
 
       <main className="fade-in">
-        {currentView === "teams" && <TeamList />}
-        {currentView === "tournaments" && <TournamentList />}
-        {currentView === "players" && <PlayerList />}
+        <Routes>
+          <Route path="/" element={<Navigate to="/tournaments" replace />} />
+
+          <Route path="/teams" element={<TeamList />} />
+          <Route path="/players" element={<PlayerList />} />
+
+          <Route path="/tournaments" element={<TournamentList />} />
+        </Routes>
       </main>
     </div>
   );
